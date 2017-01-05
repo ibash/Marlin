@@ -978,6 +978,7 @@ inline void get_serial_commands() {
     }
   #endif
 
+  
   /**
    * Loop while serial characters are incoming and the queue is not full
    */
@@ -10215,6 +10216,20 @@ void setup() {
   if (mcu & 8) SERIAL_ECHOLNPGM(MSG_WATCHDOG_RESET);
   if (mcu & 32) SERIAL_ECHOLNPGM(MSG_SOFTWARE_RESET);
   MCUSR = 0;
+
+
+  pinMode(23, OUTPUT);
+  pinMode(45, OUTPUT);
+  pinMode(31, OUTPUT);
+  pinMode(44, OUTPUT);
+  pinMode(32, OUTPUT);
+  pinMode(22, OUTPUT);
+  digitalWrite(23,HIGH);
+  digitalWrite(45,HIGH);
+  digitalWrite(31,HIGH);
+
+
+
 
   SERIAL_ECHOPGM(MSG_MARLIN);
   SERIAL_CHAR(' ');
