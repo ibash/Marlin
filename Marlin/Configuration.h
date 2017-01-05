@@ -725,8 +725,8 @@
 // Travel limits after homing (units are in mm)
 #define X_MIN_POS 0
 #define Y_MIN_POS 0
-#define Z_MIN_POS 0
-#define X_MAX_POS 167
+#define Z_MIN_POS -1
+#define X_MAX_POS 200
 #define Y_MAX_POS 250
 #define Z_MAX_POS 205
 
