@@ -1287,8 +1287,8 @@ void Stepper::report_positions() {
 
        //Set timer5 to 31khz so the PWM of the motor power is as constant as possible. (removes a buzzing noise)
        TCCR5B = (TCCR5B & ~(_BV(CS50) | _BV(CS51) | _BV(CS52))) | _BV(CS50);
-       #endif
-    #endif 
+
+    #if 
 
 
 
