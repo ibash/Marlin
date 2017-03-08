@@ -103,6 +103,7 @@
 #define E2_STEP_PIN         31  //second x axis Step
 #define E2_DIR_PIN          23  //second x axis dir
 #define E2_ENABLE_PIN       22  //second x axis enable
+#define E2_CURRENT_PIN      45  //second x axis enable
 
 // Microstepping pins - Mapping not from fastio.h (?)
 #define X_MS1_PIN          40
