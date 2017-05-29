@@ -565,7 +565,8 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {CONF_X_PULLEY,CONF_Y_PULLEY,1007.7,CONF_FILAMENT_MOTOR}  // default steps per unit for Makergear M2plus
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {CONF_X_PULLEY_STEPS,CONF_Y_PULLEY_STEPS,CONF_Z_STEPS,CONF_FILAMENT_MOTOR_STEPS}  // default steps per unit for Makergear M2plus
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   {88.88,88.88,1007.7,88.1}  // default steps per unit for Makergear M2plus
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -793,8 +794,8 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR CONF_EXTRUDER0_DIRECTION
-#define INVERT_E1_DIR CONF_EXTRUDER1_DIRECTION
+#define INVERT_E0_DIR CONF_EXTRUDER_DIRECTION
+#define INVERT_E1_DIR CONF_EXTRUDER_DIRECTION
 #define INVERT_E2_DIR true
 #define INVERT_E3_DIR true
 #define INVERT_E4_DIR false
