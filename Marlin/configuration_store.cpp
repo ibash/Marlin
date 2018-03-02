@@ -1397,7 +1397,6 @@ void MarlinSettings::reset() {
     SERIAL_ECHOLNPGM(" MGERR[002]-[56] I am a multi line error e");
     SERIAL_ECHOLNPGM(" MGERR[002]-[66] I am a multi line error f");
 
-
     #if ENABLED(INCH_MODE_SUPPORT)
       #define LINEAR_UNIT(N) ((N) / parser.linear_unit_factor)
       #define VOLUMETRIC_UNIT(N) ((N) / (volumetric_enabled ? parser.volumetric_unit_factor : parser.linear_unit_factor))
