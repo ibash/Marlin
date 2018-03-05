@@ -2186,7 +2186,7 @@ static void clean_up_after_endstop_or_probe_move() {
 
 
             SERIAL_ECHOLNPAIR("error detected bl touch set_bltouch_deployed", deploy);
-            SERIAL_ECHOLNPGM("MGERR[002]-[11] Probe Deployment Error: Please restart your printer.");
+            SERIAL_ECHOLNPGM("Error: [002]-[11] Probe Deployment Error: Please restart your printer.");
             stop();                          // punt!
             return true;
           }
@@ -4363,6 +4363,8 @@ inline void gcode_G4() {
       LCD_MESSAGEPGM(MSG_ERR_Z_HOMING);
       SERIAL_ECHO_START();
       SERIAL_ECHOLNPGM(MSG_ERR_Z_HOMING);
+      SERIAL_ECHOLNPGM("Error: [006]-[11] Cannot Home Z with unkonwn X/Y. Please home X/Y first.");
+
       return;
     }
 
@@ -10444,8 +10446,10 @@ inline void gcode_M502() {
         SERIAL_ECHO(zprobe_zoffset);
       }
       else
+      {
         SERIAL_ECHOLNPGM(MSG_Z_MIN " " STRINGIFY(Z_PROBE_OFFSET_RANGE_MIN) " " MSG_Z_MAX " " STRINGIFY(Z_PROBE_OFFSET_RANGE_MAX));
-        SERIAL_ECHOLNPGM("MGERR[003]-[11] Probe Offset(M851) out of range .");
+        SERIAL_ECHOLNPGM("Error: [003]-[11] Probe Offset(M851) out of range .");
+      }
     }
     else
       SERIAL_ECHOPAIR(": ", zprobe_zoffset);
@@ -11093,6 +11097,9 @@ inline void invalid_extruder_error(const uint8_t e) {
   SERIAL_ECHO_F(e, DEC);
   SERIAL_CHAR(' ');
   SERIAL_ECHOLN(MSG_INVALID_EXTRUDER);
+  SERIAL_ECHOLNPGM("Error: [012]-[11] Invalid Extruder");
+
+
 }
 
 #if ENABLED(PARKING_EXTRUDER)
@@ -13348,9 +13355,9 @@ void prepare_move_to_destination() {
           current_position[E_AXIS] = destination[E_AXIS]; // Behave as if the move really took place, but ignore E part
           SERIAL_ECHO_START();
           SERIAL_ECHOLNPGM(MSG_ERR_COLD_EXTRUDE_STOP);
-          SERIAL_ECHOLNPGM("MGERR[004]-[13] Cold Extrusion Prevented");
-          SERIAL_ECHOLNPAIR("MGERR[004]-[23] Cannot Extrude under C", EXTRUDE_MINTEMP);
-          SERIAL_ECHOLNPGM("MGERR[004]-[33] Heat up extruder or use M302");
+          SERIAL_ECHOLNPGM("Error: [004]-[13] Cold Extrusion Prevented");
+          SERIAL_ECHOLNPAIR("Error: [004]-[23] Cannot Extrude under C", EXTRUDE_MINTEMP);
+          SERIAL_ECHOLNPGM("Error: [004]-[33] Heat up extruder or use M302");
 
         }
         #if ENABLED(PREVENT_LENGTHY_EXTRUDE)
@@ -13358,8 +13365,8 @@ void prepare_move_to_destination() {
             current_position[E_AXIS] = destination[E_AXIS]; // Behave as if the move really took place, but ignore E part
             SERIAL_ECHO_START();
             SERIAL_ECHOLNPGM(MSG_ERR_LONG_EXTRUDE_STOP);
-            SERIAL_ECHOLNPGM("MGERR[005]-[12] Lengthy Extrusion Prevented");
-            SERIAL_ECHOLNPAIR("MGERR[005]-[22] Cannot Extrude nore than mm", EXTRUDE_MAXLENGTH);
+            SERIAL_ECHOLNPGM("Error: [005]-[12] Lengthy Extrusion Prevented");
+            SERIAL_ECHOLNPAIR("Error: [005]-[22] Cannot Extrude nore than mm", EXTRUDE_MAXLENGTH);
           }
         #endif
       }
