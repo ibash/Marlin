@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 #define MAKERGEAR_MODEL_M3_ID_REV1_000 //"M3 Dual Extruder Rev 1"
+=======
+#define MAKERGEAR_MODEL_M3_ID_REV1_000//AUTOMATICALLY FILLED BY MGSETUP PLUGIN - 18-03-01.19:10
+
+>>>>>>> 1cad90be1b4322de2e04e3c53f391ce52875f9d1
 /* MakerGear defines*/
 	/*	Model Definitions*/
 
@@ -14,6 +19,7 @@
 #endif
 
 
+<<<<<<< HEAD
 //Debug and Version
 //#define DEBUG_LEVELING_FEATURE 
 
@@ -41,6 +47,8 @@
 
 //#define PROBE_DOUBLE_TOUCH
 
+=======
+>>>>>>> 1cad90be1b4322de2e04e3c53f391ce52875f9d1
 
 /******************
  Options
