@@ -5964,10 +5964,8 @@ inline void gcode_G28(const bool always_home_all) {
 
 
 
-
-
-
   #if HOMING_Z_WITH_PROBE
+
 
   if(homeZ || home_all)
   {
@@ -5983,21 +5981,8 @@ inline void gcode_G28(const bool always_home_all) {
       }
 
       if (homeY || home_all) {
-                //since we're homing Y, set previous positions to homed positions
-
-                  previous_position_T0[X_AXIS] = CONF_X_T0_MIN;
-                 
-                  #if ENABLED(DUAL_X_CARRIAGE)
-                    previous_position_T1[X_AXIS] = CONF_X_T1_MAX;            
-                  #endif
-
-        }
-
-        if (homeY || home_all) {
                   //since we're homing Y, set previous positions to homed positions
-
                   previous_position_T0[Y_AXIS] = CONF_Y_MIN;
-
         }
 
         tool_change(0, 0, true); //change to T0
@@ -6009,10 +5994,13 @@ inline void gcode_G28(const bool always_home_all) {
         {
           do_blocking_move_to_xy(destination[X_AXIS], destination[Y_AXIS]); //xmax
         }
-        
-      #endif
-    }
 
+
+       
+        #if ENABLED(DUAL_X_CARRIAGE)
+
+
+          //optimize to reduce tool switching by checking position
           tool_change(1, 0, true); //change to T1
           destination[X_AXIS] = previous_position_T1[X_AXIS];
           destination[Y_AXIS] = previous_position_T0[Y_AXIS];
