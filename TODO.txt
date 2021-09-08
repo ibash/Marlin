@@ -1,0 +1,29 @@
+Goal:
+
+- Run the marlin 2 firmware with fixes
+- Subgoal: Figure out what changes were made to the marlin firmware so that they
+  can be reproduced
+
+Problems:
+
+- There isn't a common history between this repo and marlin.
+- There are commits with a lot of deleted files.
+
+
+Approach:
+
+1. Add marlin as the "upstream" remote
+2. Checkout the tag upstream 1.1.6 as "upstream-1.1.6"
+3. Find out what files were deleted:
+
+   git diff upstream-1.1.6..origin/1.1.6 --diff-filter=D --name-only
+
+4. Restore deleted files:
+
+   git diff upstream-1.1.6..origin/1.1.6 --diff-filter=D --name-only | tr \\n \\0 | xargs -0 git checkout upstream-1.1.6 -- ${}
+
+5. Commit them
+
+6. Take a look at the diff again:
+
+   git diff -w upstream-1.1.6..HEAD
